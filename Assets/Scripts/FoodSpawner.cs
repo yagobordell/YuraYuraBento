@@ -21,8 +21,8 @@ public class FoodSpawner : MonoBehaviour
     private int nextFoodIndex;
 
     // Input state
-    private bool isDragging = false;
     private Vector3 previewPosition;
+    private float lastEatModeExitTime;
     
     private LineRenderer dropLine;
 
@@ -56,6 +56,8 @@ public class FoodSpawner : MonoBehaviour
             if (currentPreview != null && currentPreview.activeSelf)
                 currentPreview.SetActive(false);
             if (dropLine != null) dropLine.enabled = false;
+            
+            lastEatModeExitTime = Time.time; // Track when we are in Eat Mode
             return;
         }
 
@@ -76,86 +78,31 @@ public class FoodSpawner : MonoBehaviour
 
     void HandleInput()
     {
-        // 1. Switch Style Input (L/R to move, Jump/Space/Submit to drop)
-        float horizontalAxis = 0f;
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) horizontalAxis = -1f;
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) horizontalAxis = 1f;
-        }
-        if (Gamepad.current != null)
-        {
-            horizontalAxis = Gamepad.current.leftStick.x.ReadValue();
-        }
-
-        if (Mathf.Abs(horizontalAxis) > 0.1f)
-        {
-            float moveSpeed = 8f * Time.deltaTime;
-            previewPosition.x = Mathf.Clamp(previewPosition.x + horizontalAxis * moveSpeed, -movementBoundary, movementBoundary);
-        }
-
-        bool dropPressed = (Keyboard.current != null && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame)) ||
-                           (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame);
-
-        if (dropPressed)
-        {
-            DropFood();
-            return;
-        }
-
-        // 2. Mobile Style Input (Drag to move, Release to drop)
-        bool pointerDown = false;
-        bool pointerHeld = false;
-        bool pointerUp = false;
-        Vector2 pointerPos = Vector2.zero;
-
         if (Mouse.current != null)
         {
-            pointerDown = Mouse.current.leftButton.wasPressedThisFrame;
-            pointerHeld = Mouse.current.leftButton.isPressed;
-            pointerUp = Mouse.current.leftButton.wasReleasedThisFrame;
-            pointerPos = Mouse.current.position.ReadValue();
-        }
-        else if (Touchscreen.current != null)
-        {
-            pointerDown = Touchscreen.current.primaryTouch.press.wasPressedThisFrame;
-            pointerHeld = Touchscreen.current.primaryTouch.press.isPressed;
-            pointerUp = Touchscreen.current.primaryTouch.press.wasReleasedThisFrame;
-            pointerPos = Touchscreen.current.primaryTouch.position.ReadValue();
-        }
+            // 1. Constantly track mouse position
+            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+            previewPosition.x = Mathf.Clamp(mouseWorldPos.x, -movementBoundary, movementBoundary);
 
-        if (pointerDown)
-        {
-            bool overUI = false;
-            if (EventSystem.current != null)
+            // 2. Drop on left click
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
-                {
-                    overUI = EventSystem.current.IsPointerOverGameObject(Touchscreen.current.primaryTouch.touchId.ReadValue());
-                }
-                else
+                // Prevent dropping if we JUST exited Eat Mode this exact frame
+                if (Time.time - lastEatModeExitTime < 0.1f) return;
+
+                bool overUI = false;
+                if (EventSystem.current != null)
                 {
                     overUI = EventSystem.current.IsPointerOverGameObject();
                 }
+
+                if (!overUI)
+                {
+                    DropFood();
+                    return; // Skip visual update this frame since we just destroyed the preview
+                }
             }
-
-            if (!overUI)
-            {
-                isDragging = true;
-            }
-        }
-
-        if (pointerHeld && isDragging)
-        {
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(pointerPos);
-            previewPosition.x = Mathf.Clamp(mouseWorldPos.x, -movementBoundary, movementBoundary);
-        }
-
-        if (pointerUp && isDragging)
-        {
-            isDragging = false;
-            DropFood();
-            return;
         }
 
         // Update preview visual position and guide line
@@ -271,19 +218,23 @@ public class FoodSpawner : MonoBehaviour
         
         GameObject prefab = foodPrefabs[nextFoodIndex];
         SpriteRenderer sr = prefab.GetComponent<SpriteRenderer>();
-        if (sr != null)
+        if (sr != null && sr.sprite != null)
         {
             nextItemUI.sprite = sr.sprite;
             nextItemUI.color = sr.color;
-            nextItemUI.preserveAspect = true;
+            nextItemUI.preserveAspect = false; // We will manually set the exact pixel size
 
-            // Match the visual scale proportions so a flat Tamagoyaki doesn't look like a square
-            Vector3 prefabScale = prefab.transform.localScale;
-            float maxAxis = Mathf.Max(prefabScale.x, prefabScale.y);
-            if (maxAxis > 0.01f)
-            {
-                nextItemUI.rectTransform.localScale = new Vector3(prefabScale.x / maxAxis, prefabScale.y / maxAxis, 1f);
-            }
+            // Calculate the exact physical size of the item in the Unity world
+            float worldWidth = (sr.sprite.rect.width / sr.sprite.pixelsPerUnit) * prefab.transform.localScale.x;
+            float worldHeight = (sr.sprite.rect.height / sr.sprite.pixelsPerUnit) * prefab.transform.localScale.y;
+
+            // Translate that physical size into UI pixels (e.g. 50 UI pixels per 1 meter in game)
+            // If the UI icons look too small or too big overall, you can change this 50f multiplier!
+            float uiMultiplier = 50f;
+            nextItemUI.rectTransform.sizeDelta = new Vector2(worldWidth * uiMultiplier, worldHeight * uiMultiplier);
+            
+            // Reset local scale just in case the old code changed it
+            nextItemUI.rectTransform.localScale = Vector3.one;
         }
     }
 }

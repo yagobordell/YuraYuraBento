@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5530654415825946605}
   - component: {fileID: 8893037511550429047}
-  - component: {fileID: 1189609035323246031}
   - component: {fileID: 5483170633718784008}
   - component: {fileID: 7751249798746750943}
+  - component: {fileID: -5361823641043793658}
   m_Layer: 0
   m_Name: PrefabTofuBlock
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.12893, y: 0.24196, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,63 +84,17 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 8279992722737623110, guid: 434f788a98aeed747a2c703784cb5045, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.6, y: 2.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!61 &1189609035323246031
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144665828687904259}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &5483170633718784008
 Rigidbody2D:
   serializedVersion: 5
@@ -183,3 +137,83 @@ MonoBehaviour:
   impactSquishMultiplier: 0.2
   itemName: Tofu
   baseScore: 50
+--- !u!60 &-5361823641043793658
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144665828687904259}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0285715, y: 0.73714286}
+    newSize: {x: 3.6, y: 2.58}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.48285714, y: -0.21428572}
+      - {x: 0.5, y: -0.17714286}
+      - {x: 0.50857145, y: -0.13428572}
+      - {x: 0.5114286, y: -0.108571425}
+      - {x: 0.5114286, y: 0.1942857}
+      - {x: 0.5, y: 0.26}
+      - {x: 0.48285714, y: 0.28857142}
+      - {x: 0.4485714, y: 0.32857144}
+      - {x: 0.3742857, y: 0.34571427}
+      - {x: 0.15714286, y: 0.35714287}
+      - {x: 0.034285713, y: 0.36285713}
+      - {x: -0.08, y: 0.36857143}
+      - {x: -0.18857142, y: 0.36857143}
+      - {x: -0.23428571, y: 0.35714287}
+      - {x: -0.33714285, y: 0.30571428}
+      - {x: -0.38285714, y: 0.28}
+      - {x: -0.43714285, y: 0.24571428}
+      - {x: -0.47428572, y: 0.21142857}
+      - {x: -0.4942857, y: 0.17714286}
+      - {x: -0.50857145, y: 0.14285713}
+      - {x: -0.5114286, y: 0.1}
+      - {x: -0.5114286, y: -0.18285714}
+      - {x: -0.5057143, y: -0.23714286}
+      - {x: -0.50285715, y: -0.26857144}
+      - {x: -0.46285713, y: -0.32285714}
+      - {x: -0.40857142, y: -0.34571427}
+      - {x: -0.37142858, y: -0.34857142}
+      - {x: -0.12571429, y: -0.35999998}
+      - {x: 0.03142857, y: -0.36857143}
+      - {x: 0.1942857, y: -0.36857143}
+      - {x: 0.23428571, y: -0.35714287}
+      - {x: 0.27714285, y: -0.34}
+      - {x: 0.43142858, y: -0.26285714}
+  m_UseDelaunayMesh: 1

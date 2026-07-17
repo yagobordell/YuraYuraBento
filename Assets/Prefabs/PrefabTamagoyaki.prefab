@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6284594225326067372}
   - component: {fileID: 5379210620847131104}
-  - component: {fileID: 6785161951799583967}
   - component: {fileID: 8360084929302904474}
   - component: {fileID: 355379581065590726}
+  - component: {fileID: 7775648291455043084}
   m_Layer: 0
   m_Name: PrefabTamagoyaki
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.12893, y: 0.24196, z: 0}
-  m_LocalScale: {x: 1.2, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 935173642062239037, guid: aba9950d87ebd8e4ea1d0eafed5069f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,52 +95,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!61 &6785161951799583967
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772339385806628533}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &8360084929302904474
 Rigidbody2D:
   serializedVersion: 5
@@ -183,3 +137,97 @@ MonoBehaviour:
   impactSquishMultiplier: 1.2
   itemName: Tamagoyaki
   baseScore: 100
+--- !u!60 &7775648291455043084
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772339385806628533}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.7275, y: 0.6375}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.7166667, y: -0.16111112}
+      - {x: 0.74333334, y: -0.13000001}
+      - {x: 0.75666666, y: -0.10777778}
+      - {x: 0.7677778, y: -0.054444447}
+      - {x: 0.7677778, y: 0.043333333}
+      - {x: 0.76555556, y: 0.09222222}
+      - {x: 0.75222224, y: 0.15888889}
+      - {x: 0.73222226, y: 0.19666667}
+      - {x: 0.71000004, y: 0.2188889}
+      - {x: 0.65444446, y: 0.24333334}
+      - {x: 0.25666666, y: 0.25666666}
+      - {x: 0.18111111, y: 0.2588889}
+      - {x: 0.083333336, y: 0.2611111}
+      - {x: 0.05888889, y: 0.28333333}
+      - {x: 0.025555557, y: 0.28333333}
+      - {x: -0.007777778, y: 0.27888888}
+      - {x: -0.021111112, y: 0.26333335}
+      - {x: -0.052222222, y: 0.27222222}
+      - {x: -0.06111111, y: 0.27222222}
+      - {x: -0.06777778, y: 0.26333335}
+      - {x: -0.11666667, y: 0.26555556}
+      - {x: -0.21444444, y: 0.26777777}
+      - {x: -0.34111112, y: 0.27}
+      - {x: -0.4811111, y: 0.27}
+      - {x: -0.5144445, y: 0.26555556}
+      - {x: -0.6166667, y: 0.21222223}
+      - {x: -0.62111115, y: 0.21444444}
+      - {x: -0.69222224, y: 0.17666668}
+      - {x: -0.73, y: 0.14111112}
+      - {x: -0.75, y: 0.10555556}
+      - {x: -0.7677778, y: 0.04111111}
+      - {x: -0.7677778, y: -0.12111112}
+      - {x: -0.76111114, y: -0.16777778}
+      - {x: -0.7477778, y: -0.21222223}
+      - {x: -0.7188889, y: -0.24555556}
+      - {x: -0.6988889, y: -0.25444445}
+      - {x: -0.45000002, y: -0.26555556}
+      - {x: -0.33222222, y: -0.27}
+      - {x: -0.1988889, y: -0.27444446}
+      - {x: -0.072222225, y: -0.27666667}
+      - {x: 0.030000001, y: -0.27888888}
+      - {x: 0.11666667, y: -0.28111112}
+      - {x: 0.24555556, y: -0.28333333}
+      - {x: 0.4677778, y: -0.28333333}
+      - {x: 0.52111113, y: -0.26555556}
+      - {x: 0.5744445, y: -0.24111111}
+      - {x: 0.6788889, y: -0.18333334}
+  m_UseDelaunayMesh: 1

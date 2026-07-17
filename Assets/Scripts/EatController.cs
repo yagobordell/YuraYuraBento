@@ -5,6 +5,15 @@ public class EatController : MonoBehaviour
 {
     void Update()
     {
+        // Toggle Eat Mode with 'E' key
+        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.ToggleEatMode();
+            }
+        }
+
         // Only active if Eat Mode is turned on
         if (GameManager.Instance == null || !GameManager.Instance.IsEatMode || GameManager.Instance.IsGameOver)
             return;
